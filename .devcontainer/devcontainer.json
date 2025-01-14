@@ -1,14 +1,21 @@
 {
 	"name": "Postiz Dev Container",
-	"image": "localhost/postiz-devcontainer",
-	"features": {},
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+	"postCreateCommand": "npm install",
+
+	"features": {
+		"ghcr.io/devcontainers/features/redis:1":{},
+		"ghcr.io/devcontainers/features/postgres:1":{
+			"version": "15"
+		}
+	},
 	"customizations": {
 		"vscode": {
 			"settings": {},
 			"extensions": []
 		}
 	},
-	"forwardPorts": ["4200:4200", "3000:3000"],
+	"forwardPorts": [3000, 4000],
 	"mounts": ["source=/apps,destination=/apps/dist/,type=bind,consistency=cached"]
 }
 
